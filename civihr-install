@@ -683,10 +683,10 @@ function civihr_parse_options() {
 [ -z "$SITE_NAME" ]          && civihr_app_usage && exit 99
 [ -z "$WEB_ROOT" ]           && WEB_ROOT="$BLDDIR/$SITE_NAME"
 [ -z "$CMS_ROOT" ]           && CMS_ROOT="$WEB_ROOT"
-[ -z "$CIVI_SITE_KEY" ]      && CIVI_SITE_KEY=$(civihr_make_passwd 16)
-[ -z "$ADMIN_PASS" ]         && ADMIN_PASS=$(civihr_make_passwd 12)
+[ -z "$CIVI_SITE_KEY" ]      && CIVI_SITE_KEY="test"
+[ -z "$ADMIN_PASS" ]         && ADMIN_PASS="test"
 [ -z "$CMS_TITLE" ]          && CMS_TITLE="$SITE_NAME"
-[ -z "$SITE_TOKEN" ]         && SITE_TOKEN=$(civihr_make_passwd 16)
+[ -z "$SITE_TOKEN" ]         && SITE_TOKEN="test"
 
 }
 
