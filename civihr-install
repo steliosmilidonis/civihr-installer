@@ -156,7 +156,7 @@ EOT
 ##########################################################
 function civihr_make_passwd() {
   if [ -n "$1" ]; then
-    openssl rand -base64 $1
+    pwgen -s -1  $1
   fi
 }
 
