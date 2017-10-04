@@ -1,0 +1,54 @@
+sudo -u compucorp drush fr cc_skills_brokerage
+
+
+
+sudo -u compucorp drush fr cc_homepage
+
+
+sudo -u compucorp drush fr cc_member_area
+
+sudo -u compucorp drush cvapi extension.refresh local=1
+sudo -u compucorp drush cvapi extension.install keys=uk.co.compucorp.civicrm.hrleaveandabsences
+sudo -u compucorp drush cvapi extension.install keys=uk.co.compucorp.civicrm.hrcomments
+sudo -u compucorp drush cvapi extension.install keys=uk.co.compucorp.civicrm.hremails
+
+sudo -u compucorp git fetch origin
+
+sudo -u compucorp drush vdis absence_list
+sudo -u compucorp drush vdis absence_approval_list
+sudo -u compucorp drush vdis calendar_absence_list
+sudo -u compucorp drush sql-query "DROP VIEW absence_list"
+sudo -u compucorp drush sql-query "DROP VIEW absence_approval_list"
+sudo -u compucorp drush sql-query "DROP VIEW absence_activity"
+sudo -u compucorp drush sql-query "DROP VIEW absence_entitlement"
+
+sudo -u compucorp drush en civihr_leave_absences leave_and_absences_features -y
+sudo -u compucorp drush features-revert civihr_employee_portal_features -y
+sudo -u compucorp drush features-revert civihr_default_permissions -y
+sudo -u compucorp drush updatedb -y
+sudo -u compucorp drush cvapi extension.upgrade -y
+
+sudo -u compucorp drush cc all
+sudo -u copmucorp drush cc civicrm
+
+sudo -u compucorp drush cvapi extension.disable keys=org.civicrm.hrabsence
+sudo -u compucorp rush cvapi extension.uninstall keys=org.civicrm.hrabsence
+
+
+
+
+cd sites/all/modules/civicrm/tools/extensions/civihr
+sudo -u compucorp git fetch --tags
+sudo -u compucorp git checkout 1.7.0-RC2
+cd ../civihr_tasks
+sudo -u compucorp git fetch --tags
+sudo -u compucorp git checkout 1.7.0-RC2
+cd ../org.civicrm.shoreditch/
+sudo -u compucorp git fetch --tags
+sudo -u compucorpgit checkout 1.7.0-RC2
+ cd ../../../../civihr-custom
+sudo -u compucorp git fetch --tags
+sudo -u compucorp git checkout 1.7.0-RC2
+cd ../../themes/civihr_employee_portal_theme
+sudo -u compucorp git fetch --tags
+sudo -u compucorp git checkout 1.7.0-RC2
